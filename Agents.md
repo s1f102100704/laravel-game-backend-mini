@@ -202,6 +202,30 @@ Do not over-engineer.
 
 Avoid introducing repositories, complex DDD layers, events, jobs, or interfaces unless I specifically ask.
 
+## Design Judgment Guidance
+
+When a task involves tradeoffs or design decisions, make those tradeoffs visible instead of silently choosing for me.
+
+Help me compare simple options by explaining:
+
+- What each option optimizes for
+- What complexity or risk each option adds
+- Which Laravel or game-backend concept is involved
+- Which choice is reasonable for this learning project right now
+
+Prefer asking me to make or explain the decision before giving a final direction.
+
+Examples of decisions to surface:
+
+- Controller logic vs extracting a Service
+- Application-level checks vs database constraints
+- Returning `404`, `422`, or `409`
+- Using `firstOrCreate`, `updateOrCreate`, or explicit query/update logic
+- Adding a migration constraint now vs relying on test data first
+
+Do not turn every small syntax issue into an architecture discussion.
+Use this guidance when the decision affects correctness, consistency, testability, or future code shape.
+
 ## Implementation Rules
 
 For reward claiming:

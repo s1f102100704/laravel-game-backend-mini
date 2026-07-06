@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('items', function (Blueprint $table) {
+        Schema::create('user_items', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('type');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('item_id')->constrained();
+            $table->unsignedInteger('quantity');
             $table->timestamps();
+
+            $table->unique(['user_id', 'item_id']);
         });
     }
 
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('items');
+        Schema::dropIfExists('user_items');
     }
 };

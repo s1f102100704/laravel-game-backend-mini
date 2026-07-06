@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('items', function (Blueprint $table) {
+        Schema::create('reward_claims', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('type');
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('event_reward_id')->constrained();
+            $table->dateTime('claimed_at');
             $table->timestamps();
+
+            $table->unique(['user_id', 'event_reward_id']);
         });
     }
 
@@ -24,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('items');
+        Schema::dropIfExists('reward_claims');
     }
 };
