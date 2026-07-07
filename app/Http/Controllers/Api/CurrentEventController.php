@@ -7,8 +7,7 @@ class CurrentEventController extends Controller
 {
     public function searchCurrentEvent()
     {
-        $Event = new Event();
-        $currentEvent = Event::current()->first();
+        $currentEvent = Event::current()->get();
 
         if($currentEvent){
             return response()->json([
