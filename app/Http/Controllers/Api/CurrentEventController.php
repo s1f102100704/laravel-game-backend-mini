@@ -9,7 +9,7 @@ class CurrentEventController extends Controller
     {
         $currentEvent = Event::current()->get();
 
-        if($currentEvent){
+        if(!$currentEvent->isEmpty()){
             return response()->json([
                 'status' => 'success',
                 'data' => $currentEvent
